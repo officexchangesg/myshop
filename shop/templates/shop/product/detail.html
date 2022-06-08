@@ -15,6 +15,7 @@
     </h2>
     <p class="price">${{ product.price }}</p>
     <form action="{% url "cart:cart_add" product.id %}" method="post">
+<<<<<<< HEAD
         {{ cart_product_form }}
         {% csrf_token %}
         <input type="submit" value="Add to cart">
@@ -22,3 +23,13 @@
     {{ product.description|linebreaks }}
   </div>
 {% endblock %}
+=======
+    {{ cart_product_form }}
+    {% csrf_token %}
+    <input type="submit" value="Add to cart">
+    </form>
+    {{ product.description|linebreaks }}
+
+  </div>
+{% endblock %}
+>>>>>>> 25b485f6fc3721598feb5a080a8516f3d539e28f

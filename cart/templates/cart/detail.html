@@ -29,12 +29,22 @@
             <td>{{ product.name }}</td>
             <td>
                 <form action="{% url "cart:cart_add" product.id %}" method="post">
+<<<<<<< HEAD
                   {{ item.update_quantity_form.quantity }}
                   {{ item.update_quantity_form.override }}
                   <input type="submit" value="Update">
                   {% csrf_token %}
                 </form>
               </td>
+=======
+                    {{ item.update_quantity_form.quantity }}
+                    {{ item.update_quantity_form.override }}
+                    <input type="submit" value="Update">
+                    {% csrf_token %}
+                </form>
+            </td>
+
+>>>>>>> 25b485f6fc3721598feb5a080a8516f3d539e28f
             <td>
               <form action="{% url "cart:cart_remove" product.id %}" method="post">
                 <input type="submit" value="Remove">
@@ -57,7 +67,13 @@
     <a href="{% url "shop:product_list" %}" class="button
     light">Continue shopping</a>
     <a href="{% url "orders:order_create" %}" class="button">
+<<<<<<< HEAD
         Checkout
       </a>
+=======
+    Checkout
+    </a>
+
+>>>>>>> 25b485f6fc3721598feb5a080a8516f3d539e28f
   </p>
 {% endblock %}

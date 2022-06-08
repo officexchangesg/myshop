@@ -131,4 +131,12 @@ MEDIA_ROOT = os.path.join('media/')
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+<<<<<<< HEAD
 CART_SESSION_ID = 'cart'
+=======
+#All about session
+CART_SESSION_ID = 'cart'
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+>>>>>>> 25b485f6fc3721598feb5a080a8516f3d539e28f
