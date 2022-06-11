@@ -141,6 +141,8 @@ MEDIA_ROOT = os.path.join('media/')
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+CART_SESSION_ID = 'cart'
+
 #All about session
 CART_SESSION_ID = 'cart'
 
@@ -158,3 +160,4 @@ BRAINTREE_CONF = braintree.Configuration(
     BRAINTREE_PUBLIC_KEY,
     BRAINTREE_PRIVATE_KEY
 )
+

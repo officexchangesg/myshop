@@ -3,8 +3,13 @@ from django.urls import reverse
 from django.core.files.storage import FileSystemStorage
 from django.apps import apps
 
+name = apps.get_app_config('shop').name
+media_storage = fs = FileSystemStorage(location=name + '/media')
+
+
 media_path = apps.get_app_config('shop').name + "/media"
 media_storage = fs = FileSystemStorage(location=media_path)
+
 
 class Category(models.Model):
     name = models.CharField(max_length=200,
