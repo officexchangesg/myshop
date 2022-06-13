@@ -42,7 +42,9 @@ INSTALLED_APPS = [
     'orders.apps.OrdersConfig',
     'payment.apps.PaymentConfig',
     'coupons.apps.CouponsConfig',
-    'rosetta'
+    'rosetta',
+    'parler',
+    'localflavor',
 ]
 
 MIDDLEWARE = [
@@ -70,6 +72,9 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'cart.context_processors.cart',
+                #'django.template.context_processors.i18n', 
+                # 如果启用了这个处理器，每一个 RequestContext 都会包含这些变量
+                # - LANGUAGES, LANGUAGE_BIDI, LANGUAGE_CODE
             ],
         },
     },
@@ -114,7 +119,8 @@ from django.utils.translation import gettext_lazy as _
 LANGUAGE_CODE = 'en'
 LANGUAGES = (
     ('en', _('English')),
-    ('zh', _('Chinese')),
+    ('zh-hans', _('Simplified Chinese')),
+    #('zh-hant', _('Traditional Chinese')),
 )
 LOCALE_PATHS = (
     os.path.join(BASE_DIR, 'locale/'),
@@ -164,3 +170,19 @@ BRAINTREE_CONF = braintree.Configuration(
     BRAINTREE_PRIVATE_KEY
 )
 
+#settings for parler
+PARLER_LANGUAGES = {
+    None: (
+        {'code': 'en'},
+        {'code': 'zh-hans'},
+    ),
+    'default': {
+        'fallback': 'en',
+        'hide_untranslated': False,
+    }
+}
+
+# settings for Redis
+REDIS_HOST = 'localhost'
+REDIS_PORT = 6379
+REDIS_DB = 1

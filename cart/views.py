@@ -24,6 +24,7 @@ def cart_remove(request, product_id):
     cart.remove(product)
     return redirect('cart:cart_detail')
 
+from shop.recommender import Recommender
 def cart_detail(request):
     cart = Cart(request)
     for item in cart:
@@ -31,5 +32,10 @@ def cart_detail(request):
                             'quantity': item['quantity'],
                             'override': True})
     coupon_apply_form = CouponApplyForm()
+    r = Recommender()
+    cart_products = [item['product'] for item in cart]
+    recommended_products = r.suggest_products_for(cart_products,
+                                                  max_results=4)
     return render(request, 'cart/detail.html', {'cart': cart,
-                   'coupon_apply_form': coupon_apply_form})
+                   'coupon_apply_form': coupon_apply_form,
+               'recommended_products': recommended_products})
